@@ -1,6 +1,7 @@
 import requests
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
+import csv
 
 base_url = "http://books.toscrape.com"
 page = requests.get(base_url)
@@ -9,9 +10,9 @@ soup = BeautifulSoup(page.content, 'html.parser')
 page_url_class = soup.select_one('article', class_='product_pod')
 if page_url_class:
     product_url = page_url_class.select_one('a')['href']
-url = urljoin(base_url, product_url)
+product_page_url = urljoin(base_url, product_url)
 
-page = requests.get(url)
+page = requests.get(product_page_url)
 soup = BeautifulSoup(page.content, 'html.parser')
 
 image_class = soup.select_one('article', class_='product page')
@@ -50,13 +51,20 @@ if category_class:
         if i == 3:
             category = li.get_text(strip=True)
 
-print(url)
-print(image_url)
-print(review_rating)
-print(book_title.string)
-print(upc.string)
-print(price_including_tax.string)
-print(price_excluding_tax.string)
-print(quantity_available.string)
-print(product_description[0].string)
-print(category)
+data = []
+data.append(('product_page_url', product_page_url))
+data.append(('universal_product_code', image_url))
+data.append(('review_rating', review_rating))
+data.append(('book_title', book_title.string))
+data.append(('universal_product_code', upc.string))
+data.append(('price_including_tax', price_including_tax.string))
+data.append(('price_excluding_tax', price_excluding_tax.string))
+data.append(('quantity_available', quantity_available.string))
+data.append(('product_description', product_description[0].string))
+data.append(('category', category))
+
+with open('data.csv', 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile, delimiter=',')
+    for i in range(len(data)):
+        row = f"{data[i]}"
+        csvfile.write(row+'\n')
