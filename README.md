@@ -20,14 +20,8 @@ From the project root directory, run:
 3. 
     venv\Scripts\activate
 4. 
-    pip install requests
-    pip install bs4
-    pip install urljoin
-5. 
-    venv\Scripts\activate
-6. 
     pip install -r requirements.txt
-7. 
+5. 
     python main.py
 
 (macOS)
