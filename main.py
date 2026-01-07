@@ -20,11 +20,11 @@ for a in categories:
 
 def scrape_all_categories(category_urls: list):
     file_id = 0
-    image_url_list = []
-
+    
     for category_url in category_urls:
         #CSV FILE NAME FOR PRODUCT
         file_id += 1
+        image_url_list = []
 
         #NAVIGATE TO CATEGORY PAGE AND SCRAPE THE PRODUCT PAGE URLS
         page = requests.get(category_url)
