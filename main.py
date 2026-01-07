@@ -25,7 +25,6 @@ def scrape_all_categories(category_urls: list):
     for category_url in category_urls:
         #CSV FILE NAME FOR PRODUCT
         file_id += 1
-        filename_csv = f'output_file_{file_id}.csv'
 
         #NAVIGATE TO CATEGORY PAGE AND SCRAPE THE PRODUCT PAGE URLS
         page = requests.get(category_url)
@@ -106,21 +105,22 @@ def scrape_all_categories(category_urls: list):
                 data.append(('product_description', product_description))
                 data.append(('category', category))
                 data.append(' ')
-            
-            #EXPORT IMAGES
-            image_id = 0
-            for image_url in image_url_list:
-                image_id += 1
-                filename_jpg = f'output_file_{image_id}.jpg'
-                image = requests.get(image_url)
-                with open(filename_jpg, 'wb') as f:
-                    f.write(image.content)
 
             #EXPORT DATA TO CSV FILE
+            filename_csv = f'output_file_{file_id}.csv'
             with open(filename_csv, 'w', newline='') as csvfile:
                 writer = csv.writer(csvfile, delimiter=',')
                 for item in data:
                     writer.writerow(item)
-                    
         scrape_all_pages(product_page_url_list)
+        
+        #EXPORT IMAGES
+        image_id = 0
+        for image_url in image_url_list:
+            image_id += 1
+            filename_jpg = f'img_{image_id}.jpg'
+            image = requests.get(image_url)
+            with open(filename_jpg, 'wb') as f:
+                f.write(image.content)
+        
 scrape_all_categories(category_url_list)
