@@ -39,15 +39,24 @@ def scrape_product(product_url):
     upc = soup.find('td').get_text(strip=True)
 
     #PRICES
-    price_incl = soup.find('th', string='Price (incl. tax)')\
-        .find_next_sibling('td').get_text(strip=True)
+    price_incl = (
+        soup.find('th', string='Price (incl. tax)')
+        .find_next_sibling('td')
+        .get_text(strip=True)
+    )
     
-    price_excl = soup.find('th', string='Price (excl. tax)')\
-        .find_next_sibling('td').get_text(strip=True)
+    price_excl = (
+        soup.find('th', string='Price (excl. tax)')
+        .find_next_sibling('td')
+        .get_text(strip=True)
+    )
 
     #QUANITY AVAILABLE
-    quantity = soup.find('th', string='Availability')\
-        .find_next_sibling('td').get_text(strip=True)
+    quantity = (
+        soup.find('th', string='Availability')
+        .find_next_sibling('td')
+        .get_text(strip=True)
+    )
 
     #PRODUCT DESCRIPTION
     description = soup.select_one('#product_description + p')
