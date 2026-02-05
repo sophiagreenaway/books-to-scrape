@@ -1,4 +1,4 @@
-from categories import get_categories
+from categories import get_categories, paginate
 from products import get_product_page_urls, scrape_product
 from exporter import export_to_csv
 from images import download_images
@@ -11,13 +11,15 @@ def main():
 
     for category_name, category_url in category_urls:
 
-        product_urls = get_product_page_urls(category_url)
+        # product_urls = get_product_page_urls(category_url)
+        for soup in paginate(category_url):
+            product_urls = get_product_page_urls(category_url, soup)
 
         products = []
         images = []
 
-        for url in product_urls:
-            product = scrape_product(url)
+        for product_url in product_urls:
+            product = scrape_product(product_url)
             products.append(product)
             images.append(product["image_url"])
 

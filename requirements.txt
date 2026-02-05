@@ -1,7 +1,0 @@
-#Requirements for the Books to Scrape Script
-#This document contains the requirements and instructions for developing a script to scrape books from book.toscrape.com
-
-#Latest versions of the following:
-requests
-bs4
-urljoin
