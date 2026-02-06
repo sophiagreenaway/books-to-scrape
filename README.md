@@ -1,37 +1,53 @@
 # books-to-scrape
 
-This project is a Python application that scrapes book pricing and product data from the *Books to Scrape* website and writes the results to CSV files and saves the book covers as JPGs.
+Books-to-Scrape is a Python application that scrapes book pricing and product metadata from the Books to Scrape website. The scraper exports structured data to CSV files and downloads the corresponding book cover images for local storage.
 
-# Setup Instructions
+# Features
+- Scrapes book data across multiple paginated category pages
+- Extracts pricing, availability, and product metadata
+- Normalizes and validates URLs
+- Downloads and stores images locally
+- Outputs clean, structured CSV files
+- Skips duplicate records to avoid redundancy
+
+## Setup Instructions
 
 # Requirements
-- Python 3.9 or higher
-- pip
+- Python 3
+- Requests
+- BeautifulSoup
+- CSV (Python standard library)
 
-# Create your Virtual Environment
+# Usage
+Running the script will:
 
-From the project root directory, run:
+1. Fetch category pages
+2. Paginate through results
+3. Scrape individual product details
+4. Save book data to a CSV file
+5. Download and store cover images in nested directories
 
-(WINDOWS)
-1. 
-    cd C:\Users\YourName\..\books-to-scrape
-2. 
-    python -m venv venv 
-3. 
-    venv\Scripts\activate
-4. 
-    pip install -r requirements.txt
-5. 
-    python main.py
+## Create your Virtual Environment
+From the project root directory:
 
-(macOS)
-1. 
-    cd ../books-to-scrape
-2. 
-    python3 -m venv venv 
-3. 
-    source venv/bin/activate
-4. 
-    pip install -r requirements.txt
-5. 
-    python main.py
+# (WINDOWS)
+cd C:\Users\YourName\..\books-to-scrape
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python main.py
+
+# (macOS)
+cd ../books-to-scrape
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python main.py
+
+## Future Plans
+Incorporate testing for edge cases & unit testing
+Error handling (try/catch)
+Databasing (SQLite)
+
+## Disclaimer
+This project is for educational purposes only.
