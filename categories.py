@@ -4,7 +4,8 @@ from urllib.parse import urljoin
 from config import BASE_URL
 
 def get_categories():
-    page = requests.get(BASE_URL)
+    current_url = "https://books.toscrape.com/"
+    page = requests.get(current_url)
     soup = BeautifulSoup(page.content, "html.parser")
 
     categories = []
@@ -16,9 +17,9 @@ def get_categories():
     for a in links:
         name = a.get_text(strip=True)
         if name != "Books":
-            url = urljoin(BASE_URL, a['href'])
+            url = urljoin(current_url, a['href'])
             categories.append((name, url))
-            
+
     return categories
 
 #SCRAPES URL FOR NEXT PAGE IN CATEGORY

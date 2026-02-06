@@ -20,11 +20,8 @@ def scrape_product(product_url):
     soup = BeautifulSoup(page.content, "html.parser")
 
     #IMAGE URL
-    # image = soup.select_one('article.product_page img')
     image = soup.select_one('div.item.active img')
     image_url = urljoin(BASE_URL, image['src'])
-    # else:
-    #     image_url = None
 
     #TITLE
     title = soup.find('h1').get_text(strip=True)
@@ -41,7 +38,6 @@ def scrape_product(product_url):
     price_excl = get_table_value(soup, "Price (excl. tax)")
     quantity = get_table_value(soup, "Availability")
     upc = get_table_value(soup, "UPC")
-
 
     #PRODUCT DESCRIPTION
     description = soup.select_one('#product_description + p')
