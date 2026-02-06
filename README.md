@@ -10,15 +10,15 @@ Books-to-Scrape is a Python application that scrapes book pricing and product me
 - Outputs clean, structured CSV files
 - Skips duplicate records to avoid redundancy
 
-## Setup Instructions
+# Setup Instructions
 
-# Requirements
+## Requirements
 - Python 3
 - Requests
 - BeautifulSoup
 - CSV (Python standard library)
 
-# Usage
+## Usage
 Running the script will:
 
 1. Fetch category pages
@@ -27,27 +27,28 @@ Running the script will:
 4. Save book data to a CSV file
 5. Download and store cover images in nested directories
 
-## Create your Virtual Environment
+# Create your Virtual Environment
 From the project root directory:
 
-# (WINDOWS)
+## (WINDOWS)
 cd C:\Users\YourName\..\books-to-scrape
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 python main.py
 
-# (macOS)
+## (macOS)
 cd ../books-to-scrape
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 python main.py
 
-## Future Plans
-Incorporate testing for edge cases & unit testing
+# Future Plans
+Testing for edge cases
+Unit tests
 Error handling (try/catch)
 Databasing (SQLite)
 
-## Disclaimer
+# Disclaimer
 This project is for educational purposes only.

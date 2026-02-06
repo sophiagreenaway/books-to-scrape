@@ -1,0 +1,10 @@
+# DATA OUTPUTS
+*.csv
+images/
+
+# PYTHON CACHE
+__pycache__/
+*.pyc
+
+# VIRTUAL ENVIRONMENT
+venv/
