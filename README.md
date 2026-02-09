@@ -27,27 +27,16 @@ Running the script will:
 4. Save book data to a CSV file
 5. Download and store cover images in nested directories
 
-## Create your Virtual Environment
-From the project root directory:
-
-### Windows
-- cd C:\Users\YourName\..\books-to-scrape
-- python -m venv venv
-- venv\Scripts\activate
-- pip install -r requirements.txt
-- python main.py
-
-### macOS
-- cd ../books-to-scrape
-- python3 -m venv venv
-- source venv/bin/activate
-- pip install -r requirements.txt
-- python main.py
+## Setup
+1. Clone the repo
+    - git clone https://github.com/sophiagreenaway/books-to-scrape
+2. Create and activate your Virtual Environment
+    - python -m venv venv venv\Scripts\activate or venv/bin/activate for macOS
+3. Install dependencies from requirements.txt
+    - pip install -r requirements.txt
 
 ## Future Plans
 Testing for edge cases
-Unit tests
-Error handling (try/catch)
 Databasing (SQLite)
 
 ## Disclaimer
